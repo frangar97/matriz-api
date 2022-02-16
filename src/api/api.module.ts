@@ -9,10 +9,13 @@ import { ProbabilidadService } from './probabilidad/probabilidad.service';
 import { RespuestaController } from './respuesta/respuesta.controller';
 import { RespuestaRepository } from './respuesta/respuesta.repository';
 import { RespuestaService } from './respuesta/respuesta.service';
+import { RiesgoController } from './riesgo/riesgo.controller';
+import { RiesgoRepository } from './riesgo/riesgo.repository';
+import { RiesgoService } from './riesgo/riesgo.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([RespuestaRepository, ProbabilidadRepository, ImpactoRepository])],
-    controllers: [RespuestaController, ProbabilidadController, ImpactoController],
-    providers: [RespuestaService, ProbabilidadService, ImpactoService]
+    imports: [TypeOrmModule.forFeature([RespuestaRepository, ProbabilidadRepository, ImpactoRepository, RiesgoRepository])],
+    controllers: [RespuestaController, ProbabilidadController, ImpactoController, RiesgoController],
+    providers: [RespuestaService, ProbabilidadService, ImpactoService, RiesgoService]
 })
 export class ApiModule { }

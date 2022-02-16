@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Riesgo } from "../riesgo/riesgo.entity";
 
 @Entity()
 export class Impacto {
@@ -11,4 +12,7 @@ export class Impacto {
 
     @Column()
     orden: number
+
+    @OneToMany(() => Riesgo, riesgo => riesgo.impacto)
+    riesgos: Riesgo[]
 }
