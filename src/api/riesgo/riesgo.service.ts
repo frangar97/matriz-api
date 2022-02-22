@@ -21,7 +21,7 @@ export class RiesgoService {
             .innerJoinAndSelect("riesgo.probabilidad", "probabilidad")
             .innerJoinAndSelect("riesgo.impacto", "impacto")
             .innerJoinAndSelect("riesgo.respuesta", "respuesta")
-            .select(["riesgo.id","riesgo.nombre", "probabilidad.probabilidad", "probabilidad.orden", "impacto.impacto", "impacto.orden", "respuesta.respuesta"])
+            .select(["riesgo.id", "riesgo.nombre", "probabilidad.probabilidad", "probabilidad.orden", "impacto.impacto", "impacto.orden", "respuesta.respuesta"])
             .getMany();
 
         return query;
