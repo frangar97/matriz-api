@@ -11,9 +11,9 @@ export class Control {
     @Column()
     nombre: string
 
-    @ManyToOne(() => TipoControl, tipoControl => tipoControl.Controles)
-    TipoControl: TipoControl;
+    @ManyToOne(() => TipoControl, tipoControl => tipoControl.controles)
+    tipoControl: TipoControl;
 
-    @ManyToOne(() => TipoEjecucion, tipoEjecucion => tipoEjecucion.Controles)
-    TipoEjecucion: TipoEjecucion;
+    @ManyToOne(() => TipoEjecucion, tipoEjecucion => tipoEjecucion.controles)
+    tipoEjecucion: TipoEjecucion;
 }

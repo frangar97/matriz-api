@@ -9,7 +9,7 @@ import { Control } from "./control.entity";
 export class ControlRepository extends Repository<Control>{
     async createControl(nombre: string, tipoEjecucion: TipoEjecucion, tipoControl: TipoControl): Promise<Control> {
         try {
-            const control = this.create({ nombre, TipoControl: tipoControl, TipoEjecucion: tipoEjecucion });
+            const control = this.create({ nombre, tipoControl, tipoEjecucion });
             await this.save(control);
             return control;
         } catch (error) {

@@ -16,9 +16,9 @@ export class ControlService {
 
     async getAll(): Promise<Control[]> {
         const query = await this.controlRepository.createQueryBuilder("control")
-            .innerJoinAndSelect("control.TipoControl", "TipoControl")
-            .innerJoinAndSelect("control.TipoEjecucion", "TipoEjecucion")
-            .select(["control.id", "control.nombre", "TipoControl.tipo", "TipoEjecucion.tipo"])
+            .innerJoinAndSelect("control.tipoControl", "tipoControl")
+            .innerJoinAndSelect("control.tipoEjecucion", "tipoEjecucion")
+            .select(["control.id", "control.nombre", "tipoControl.tipo", "tipoEjecucion.tipo"])
             .getMany();
 
         return query;

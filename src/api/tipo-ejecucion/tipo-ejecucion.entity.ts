@@ -10,6 +10,6 @@ export class TipoEjecucion {
     @Column()
     tipo: string
 
-    @OneToMany(() => Control, control => control.TipoEjecucion)
-    Controles: Control[]
+    @OneToMany(() => Control, control => control.tipoEjecucion)
+    controles: Control[]
 }

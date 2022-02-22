@@ -9,6 +9,6 @@ export class TipoControl {
     @Column()
     tipo: string
 
-    @OneToMany(() => Control, control => control.TipoControl)
-    Controles: Control[]
+    @OneToMany(() => Control, control => control.tipoControl)
+    controles: Control[]
 }
