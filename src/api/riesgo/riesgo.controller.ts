@@ -16,4 +16,9 @@ export class RiesgoController {
     async createRiesgo(@Body() crearRiesgoDto: CrearRiesgoDto): Promise<Riesgo> {
         return await this.riesgoService.createRiesgo(crearRiesgoDto);
     }
+
+    @Post("/agregarcontrol")
+    async agregarControles(@Body() controles: { riesgoId: number, controlesId: number[] }): Promise<Riesgo> {
+        return await this.riesgoService.agregarControles(controles);
+    }
 }

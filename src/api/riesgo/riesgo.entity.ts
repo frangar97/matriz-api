@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Control } from "../control/control.entity";
 import { Impacto } from "../impacto/impacto.entity";
 import { Probabilidad } from "../probabilidad/probabilidad.entity";
 import { Respuesta } from "../respuesta/respuesta.entity";
@@ -19,4 +20,8 @@ export class Riesgo {
 
     @ManyToOne(() => Respuesta, respuesta => respuesta.riesgos)
     respuesta: Respuesta;
+
+    @ManyToMany(() => Control, control => control.riesgo)
+    @JoinTable()
+    controles: Control[];
 }
