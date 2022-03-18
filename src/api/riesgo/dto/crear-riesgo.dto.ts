@@ -5,6 +5,14 @@ export class CrearRiesgoDto {
     @IsNotEmpty({ message: "El nombre del riesgo es obligatorio" })
     nombre: string;
 
+    @IsString()
+    @IsNotEmpty({ message: "El nombre del riesgo es obligatorio" })
+    owner: string;
+
+    @IsString()
+    @IsNotEmpty({ message: "El nombre del riesgo es obligatorio" })
+    costo: string;
+
     @IsNotEmpty({ message: "El riesgo debe tener un impacto" })
     impactoId: number;
 

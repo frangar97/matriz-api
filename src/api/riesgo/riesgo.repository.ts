@@ -7,9 +7,9 @@ import { Riesgo } from "./riesgo.entity";
 
 @EntityRepository(Riesgo)
 export class RiesgoRepository extends Repository<Riesgo>{
-    async createRiesgo(nombre: string, respuesta: Respuesta, probabilidad: Probabilidad, impacto: Impacto): Promise<Riesgo> {
+    async createRiesgo(nombre: string, respuesta: Respuesta, probabilidad: Probabilidad, impacto: Impacto, owner: string, costo: string): Promise<Riesgo> {
         try {
-            const riesgo = this.create({ nombre, respuesta, probabilidad, impacto });
+            const riesgo = this.create({ nombre, respuesta, probabilidad, impacto, owner, costo });
             await this.save(riesgo);
             return riesgo;
         } catch (error) {

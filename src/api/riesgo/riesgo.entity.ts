@@ -12,6 +12,12 @@ export class Riesgo {
     @Column()
     nombre: string
 
+    @Column()
+    owner: string
+
+    @Column()
+    costo: string
+
     @ManyToOne(() => Impacto, impacto => impacto.riesgos)
     impacto: Impacto;
 

@@ -27,14 +27,14 @@ export class RiesgoService {
             .leftJoinAndSelect("riesgo.controles", "controles")
             .leftJoinAndSelect("controles.tipoControl", "tipoControl")
             .leftJoinAndSelect("controles.tipoEjecucion", "tipoEjecucion")
-            .select(["riesgo.id", "riesgo.nombre", "probabilidad.probabilidad", "probabilidad.orden", "impacto.impacto", "impacto.orden", "respuesta.respuesta", "controles.id", "controles.nombre", "tipoControl.tipo", "tipoEjecucion.tipo"])
+            .select(["riesgo.id", "riesgo.nombre", "riesgo.owner", "riesgo.costo", "probabilidad.probabilidad", "probabilidad.orden", "impacto.impacto", "impacto.orden", "respuesta.respuesta", "controles.id", "controles.nombre", "tipoControl.tipo", "tipoEjecucion.tipo"])
             .getMany();
 
         return query;
     }
 
     async createRiesgo(crearRiesgoDto: CrearRiesgoDto): Promise<Riesgo> {
-        const { nombre, respuestaId, probabilidadId, impactoId } = crearRiesgoDto;
+        const { nombre, respuestaId, probabilidadId, impactoId, owner, costo } = crearRiesgoDto;
 
         const respuesta = await this.respuestaRepository.findOne(respuestaId);
         if (!respuesta) {
@@ -51,7 +51,7 @@ export class RiesgoService {
             throw new NotFoundException(`El impacto con el id ${respuestaId} no existe`);
         }
 
-        return await this.riesgoRepository.createRiesgo(nombre, respuesta, probabilidad, impacto);
+        return await this.riesgoRepository.createRiesgo(nombre, respuesta, probabilidad, impacto, owner, costo);
     }
 
     async agregarControles(controles: { riesgoId: number, controlesId: number[] }): Promise<Riesgo> {
